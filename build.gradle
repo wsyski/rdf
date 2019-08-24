@@ -32,4 +32,6 @@ dependencies {
 
     compile group: 'org.eclipse.rdf4j', name: 'rdf4j-model', version: '3.0.0'
     compile group: 'org.eclipse.rdf4j', name: 'rdf4j-util', version: '3.0.0'
+    compile group: 'org.eclipse.rdf4j', name: 'rdf4j-runtime', version: '3.0.0'
+    compile group: 'com.github.jsonld-java', name: 'jsonld-java', version: '0.12.5'
 }
