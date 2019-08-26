@@ -3,7 +3,7 @@
  */
 package com.axiell.arena.rdf;
 
-public class Library {
+public class AxiellBook {
     public boolean someLibraryMethod() {
         return true;
     }
