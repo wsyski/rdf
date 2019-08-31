@@ -50,7 +50,7 @@ public class Book1Test {
 
 		// Instead of simply printing the statements to the screen, we use a Rio writer to
 		// write the model in RDF/XML syntax:
-		Rio.write(model, System.out, RDFFormat.RDFXML);
+		Rio.write(model, System.out, RDFFormat.JSONLD);
 
 		// Note that instead of writing to the screen using `System.out` you could also provide
 		// a java.io.FileOutputStream or a java.io.FileWriter to save the model to a file
