@@ -23,7 +23,7 @@ import com.github.jsonldjava.utils.JsonUtils;
 import com.google.common.base.Charsets;
 
 
-public class Book2Test {
+public class Rdf2Test {
 
     @Test
     public void convertRdfToPrettyJson(){

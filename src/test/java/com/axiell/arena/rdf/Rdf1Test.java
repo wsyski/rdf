@@ -25,7 +25,7 @@ import org.eclipse.rdf4j.rio.Rio;
  *
  * @author Jeen Broekstra
  */
-public class Book1Test {
+public class Rdf1Test {
 
 	public static void main(String[] args) {
 

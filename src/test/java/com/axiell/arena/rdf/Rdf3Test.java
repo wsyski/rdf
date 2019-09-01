@@ -19,7 +19,7 @@ import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class Book3Test {
+public class Rdf3Test {
 
 	public static void main(String[] args) throws URISyntaxException {
 
@@ -42,8 +42,7 @@ public class Book3Test {
 
 		Model model = builder.build();
 
-		//WriterConfig writerConfig = (new WriterConfig()).useDefaults();
-		WriterConfig writerConfig = new WriterConfig();
+		WriterConfig writerConfig = (new WriterConfig()).useDefaults();
 		writerConfig.set(BasicWriterSettings.PRETTY_PRINT, true);
 		writerConfig.set(JSONLDSettings.JSONLD_MODE, JSONLDMode.COMPACT);
 		writerConfig.set(JSONLDSettings.OPTIMIZE, true);
