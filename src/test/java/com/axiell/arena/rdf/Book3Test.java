@@ -9,6 +9,11 @@ import org.eclipse.rdf4j.model.util.ModelBuilder;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.Rio;
+import org.eclipse.rdf4j.rio.RioSetting;
+import org.eclipse.rdf4j.rio.WriterConfig;
+import org.eclipse.rdf4j.rio.helpers.BasicWriterSettings;
+import org.eclipse.rdf4j.rio.helpers.JSONLDMode;
+import org.eclipse.rdf4j.rio.helpers.JSONLDSettings;
 
 import java.net.URISyntaxException;
 import java.time.LocalDate;
@@ -37,6 +42,12 @@ public class Book3Test {
 
 		Model model = builder.build();
 
-		Rio.write(model, System.out, SCHEMA.NAMESPACE, RDFFormat.JSONLD);
+		//WriterConfig writerConfig = (new WriterConfig()).useDefaults();
+		WriterConfig writerConfig = new WriterConfig();
+		writerConfig.set(BasicWriterSettings.PRETTY_PRINT, true);
+		writerConfig.set(JSONLDSettings.JSONLD_MODE, JSONLDMode.COMPACT);
+		writerConfig.set(JSONLDSettings.OPTIMIZE, true);
+		writerConfig.set(JSONLDSettings.HIERARCHICAL_VIEW, true);
+		Rio.write(model, System.out, RDFFormat.JSONLD, writerConfig);
 	}
 }
