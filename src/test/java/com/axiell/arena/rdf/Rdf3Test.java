@@ -6,6 +6,8 @@ import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 import org.eclipse.rdf4j.model.util.ModelBuilder;
+import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.Rio;
@@ -21,7 +23,7 @@ import java.util.Date;
 
 public class Rdf3Test {
 
-	public static void main(String[] args) throws URISyntaxException {
+	public static void main(String[] args) {
 
 		ValueFactory vf = SimpleValueFactory.getInstance();
 		BNode author = vf.createBNode();
@@ -29,10 +31,14 @@ public class Rdf3Test {
 		ModelBuilder builder = new ModelBuilder();
 		builder
 				.setNamespace(SCHEMA.PREFIX, SCHEMA.NAMESPACE)
+				.setNamespace(DCTERMS.PREFIX, DCTERMS.NAMESPACE)
 				.subject("http://www.axiell.com/arena/1234")
 					.add(RDF.TYPE, SCHEMA.Book)
 					.add(SCHEMA.name, "The Catcher in the Rye")
 					.add(SCHEMA.isbn, "031676947")
+					.add(SCHEMA.bookEdition, "First Back Bay Paperback Edition (US/CAN)")
+					.add(SCHEMA.numberOfPages, 277)
+					.add(DCTERMS.IS_PART_OF, "http://www.axiell.com/arena/5678")
 				    .add(SCHEMA.author, author)
 				.subject(author)
 				    .add(RDF.TYPE, SCHEMA.Person)
