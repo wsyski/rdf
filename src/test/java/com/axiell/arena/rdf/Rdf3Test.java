@@ -55,5 +55,6 @@ public class Rdf3Test {
 		writerConfig.set(JSONLDSettings.OPTIMIZE, true);
 		writerConfig.set(JSONLDSettings.HIERARCHICAL_VIEW, true);
 		Rio.write(model, System.out, RDFFormat.JSONLD, writerConfig);
+		// Rio.write(model, System.out, RDFFormat.TURTLE);
 	}
 }
