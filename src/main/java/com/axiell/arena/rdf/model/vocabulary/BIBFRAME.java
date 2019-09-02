@@ -29,7 +29,7 @@ public class BIBFRAME {
 	/**
 	 * {@code <BIBFRAME>}
 	 */
-	public static final String PREFIX = "BIBFRAME"; 
+	public static final String PREFIX = "bf";
 
 	/**********************
 	 * IRI String Constants

@@ -1,5 +1,6 @@
 package com.axiell.arena.rdf;
 
+import com.axiell.arena.rdf.model.vocabulary.BIBFRAME;
 import com.axiell.arena.rdf.model.vocabulary.SCHEMA;
 import org.eclipse.rdf4j.model.BNode;
 import org.eclipse.rdf4j.model.Model;
@@ -32,6 +33,7 @@ public class Rdf3Test {
 		builder
 				.setNamespace(SCHEMA.PREFIX, SCHEMA.NAMESPACE)
 				.setNamespace(DCTERMS.PREFIX, DCTERMS.NAMESPACE)
+				.setNamespace(BIBFRAME.PREFIX, BIBFRAME.NAMESPACE)
 				.subject("http://www.axiell.com/arena/1234")
 					.add(RDF.TYPE, SCHEMA.Book)
 					.add(SCHEMA.name, "The Catcher in the Rye")
@@ -40,6 +42,7 @@ public class Rdf3Test {
 					.add(SCHEMA.numberOfPages, 277)
 					.add(SCHEMA.isAccessibleForFree, false)
 					.add(DCTERMS.IS_PART_OF, "http://www.axiell.com/arena/5678")
+					.add(BIBFRAME.shelfMark, "Hce")
 				    .add(SCHEMA.author, author)
 				.subject(author)
 				    .add(RDF.TYPE, SCHEMA.Person)
