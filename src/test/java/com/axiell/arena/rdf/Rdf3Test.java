@@ -38,6 +38,7 @@ public class Rdf3Test {
 					.add(SCHEMA.isbn, "031676947")
 					.add(SCHEMA.bookEdition, "First Back Bay Paperback Edition (US/CAN)")
 					.add(SCHEMA.numberOfPages, 277)
+					.add(SCHEMA.isAccessibleForFree, false)
 					.add(DCTERMS.IS_PART_OF, "http://www.axiell.com/arena/5678")
 				    .add(SCHEMA.author, author)
 				.subject(author)
