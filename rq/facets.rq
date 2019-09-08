@@ -1,0 +1,39 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?cnt ?facet_text ?value
+WHERE {
+  {
+    {
+      SELECT DISTINCT (count(DISTINCT ?id) as ?cnt) {  ?id a <http://dbpedia.org/ontology/Writer> .  }
+    }
+    BIND("-- No Selection --" AS ?facet_text)
+  }
+  UNION {
+    SELECT DISTINCT ?cnt ?value ?facet_text {
+      {
+        SELECT DISTINCT (count(DISTINCT ?id) as ?cnt) ?value {
+          ?id a <http://dbpedia.org/ontology/Writer> .
+          ?id <http://dbpedia.org/ontology/genre> ?value .
+        }
+        GROUP BY ?value
+      }
+      FILTER(BOUND(?value))
+      BIND(COALESCE(?value, <http://ldf.fi/NONEXISTENT_URI>) AS ?labelValue)
+      OPTIONAL {
+        ?labelValue skos:prefLabel ?lbl .
+        FILTER(langMatches(lang(?lbl), "en")) .
+      }
+      OPTIONAL {
+        ?labelValue rdfs:label ?lbl . FILTER(langMatches(lang(?lbl), "en")) .
+      }
+      OPTIONAL {
+        ?labelValue skos:prefLabel ?lbl . FILTER(langMatches(lang(?lbl), "")) .
+      }
+      OPTIONAL {
+        ?labelValue rdfs:label ?lbl . FILTER(langMatches(lang(?lbl), "")) .
+      }
+      BIND(COALESCE(?lbl, IF(!ISURI(?value), ?value, "")) AS ?facet_text)
+    }
+  }
+}
